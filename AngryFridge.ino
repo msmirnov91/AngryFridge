@@ -1,20 +1,4 @@
-#include "Adafruit_GFX.h"
-#include "Adafruit_ILI9341.h"
-
-#include "utils.h"
-
-
-#define TFT_DC 9
-#define TFT_CS 10
-#define TFT_RST 8
-
-// Uno Hardware SPI
-#define TFT_MISO 12  // NOT CONNECTED
-#define TFT_SDA 11   // MOSI
-#define TFT_CLK 13
-
-Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_SDA, TFT_CLK, TFT_RST, TFT_MISO);
-
+#include "tft.h"
 
 void setup(){
   tft.begin();
@@ -39,7 +23,6 @@ void setup(){
   tft.fillScreen(ILI9341_BLACK);
 }
 
- 
 void loop()
 {
   tft.setCursor(55,120);
