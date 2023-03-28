@@ -1,6 +1,9 @@
+#include "fridge.h"
 #include "tft.h"
+#include "notificator.h"
 
-void setup(){
+void setup()
+{
   tft.begin();
   tft.setRotation(1);  // Album orientation
 
@@ -25,7 +28,11 @@ void setup(){
 
 void loop()
 {
+  fridge.perform();
+  
   tft.setCursor(55,120);
   tft.print(utf8rus("Система загружена"));
+
+  notificator.soundAlert();
 }
 
