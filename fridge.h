@@ -7,6 +7,12 @@ public:
   {
     
   }
+
+  bool doorIsOpen()
+  {
+    return False;
+  }
+  
 private:
 };
 
