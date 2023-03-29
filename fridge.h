@@ -8,9 +8,9 @@ public:
     
   }
 
-  bool doorIsOpen()
+  bool doorIsOpen() const
   {
-    return False;
+    return false;
   }
   
 private:
