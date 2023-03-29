@@ -12,7 +12,7 @@ void Notificator::begin()
 
 void Notificator::onSystemLoading()
 {
-  _screen.printRussianText(55, 5, "Загрузка системы...", ILI9341_WHITE);
+  _screen.printRussianText(55, 5, "Загрузка системы...");
   _screen.drawCircle(160, 120, 15, ILI9341_YELLOW);
   _screen.printText(4, 220, "Powered by DCP Electronics", ILI9341_GREEN);
 }
@@ -24,12 +24,12 @@ void Notificator::onLoadingEnded()
 
 void Notificator::onSystemLoaded()
 {
-  _screen.printRussianText(55, 100, "Система загружена", ILI9341_GREEN);
+  _screen.printRussianText(55, 80, "Система загружена", ILI9341_GREEN);
 }
 
 void Notificator::showTemperature(int temperature)
 {
-  _screen.printRussianText(40, 120, String(temperature) + " градусов", ILI9341_WHITE);
+  _screen.printRussianText(40, 120, String(temperature) + " градусов");
 }
 
 void Notificator::showCompressorState(bool isOn)
@@ -41,6 +41,6 @@ void Notificator::showCompressorState(bool isOn)
   else {
     msg += "выкл";
   }
-  _screen.printRussianText(40, 140, msg, ILI9341_WHITE);
+  _screen.printRussianText(40, 140, msg);
 }
  
