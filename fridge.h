@@ -1,21 +1,9 @@
 class Fridge {
 public:
-  Fridge()
-  {}
+  Fridge();
 
-  void perform()
-  {
-    
-  }
+  void perform();
 
-  bool doorIsOpen() const
-  {
-    return false;
-  }
-  
-private:
+  bool doorIsOpen() const;
 };
-
-Fridge fridge;
-
 

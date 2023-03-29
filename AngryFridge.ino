@@ -1,6 +1,10 @@
 #include "fridge.h"
 #include "notificator.h"
 
+
+Notificator notificator;
+Fridge fridge;
+
 void setup()
 {
   notificator.begin();
