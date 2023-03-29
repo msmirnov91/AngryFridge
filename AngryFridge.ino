@@ -18,5 +18,8 @@ void loop()
 {
   notificator.onSystemLoaded();
   fridge.perform();
+
+  notificator.showTemperature(fridge.getTemperature());
+  notificator.showCompressorState(fridge.isCompressorTurnedOn());
 }
 

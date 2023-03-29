@@ -24,6 +24,23 @@ void Notificator::onLoadingEnded()
 
 void Notificator::onSystemLoaded()
 {
-  _screen.printRussianText(55, 120, "Система загружена", ILI9341_GREEN);
+  _screen.printRussianText(55, 100, "Система загружена", ILI9341_GREEN);
+}
+
+void Notificator::showTemperature(int temperature)
+{
+  _screen.printRussianText(40, 120, String(temperature) + " градусов", ILI9341_WHITE);
+}
+
+void Notificator::showCompressorState(bool isOn)
+{
+  String msg = "Компрессор ";
+  if (isOn) {
+    msg += "вкл";
+  }
+  else {
+    msg += "выкл";
+  }
+  _screen.printRussianText(40, 140, msg, ILI9341_WHITE);
 }
  

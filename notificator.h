@@ -10,6 +10,9 @@ public:
   void onLoadingEnded();
   void onSystemLoaded();
 
+  void showTemperature(int temperature);
+  void showCompressorState(bool isOn);
+
 private:
   Screen _screen;
 };
