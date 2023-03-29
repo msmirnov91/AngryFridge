@@ -1,5 +1,5 @@
 #include "src/fridge.h"
-#include "notificator.h"
+#include "src/notificator.h"
 
 
 Notificator notificator;
