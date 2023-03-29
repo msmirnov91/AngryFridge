@@ -1,4 +1,4 @@
-#include "fridge.h"
+#include "src/fridge.h"
 #include "notificator.h"
 
 
