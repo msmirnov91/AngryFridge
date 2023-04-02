@@ -3,11 +3,13 @@
 
 Notificator::Notificator()
   : _screen()
+  , _dfplayer()
 {}
 
 void Notificator::begin()
 {
   _screen.begin();
+  _dfplayer.begin();
 }
 
 void Notificator::onSystemLoading()

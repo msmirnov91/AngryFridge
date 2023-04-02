@@ -1,4 +1,5 @@
 #include "hardware_modules/screen.h"
+#include "hardware_modules/dfplayer_mini_mp3.h"
 
 
 class Notificator {
@@ -15,6 +16,7 @@ public:
 
 private:
   Screen _screen;
+  DFPlayer _dfplayer;
 };
 
 

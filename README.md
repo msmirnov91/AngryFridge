@@ -8,10 +8,11 @@ Currently supports only `Arduion Uno`. `Mega` and `Nano` will be supported later
 ## Used libraries
 - `Adafruit_GFX`
 - `Adafruit_ILI9341`
+- `DFPlayer Mini mp3 Arduino Library` [download](https://iarduino.ru/file/140.html)
 
 ## Used hardware
 - 240X320 LCD SPI TFT display controlled by `ILI9341`
-- `DFPlayer mini` MP3 module
+- `DFPlayer mini` MP3 module [example](https://lesson.iarduino.ru/page/urok-17-podklyuchenie-mini-mp3-pleera-k-arduino/)
 - `DS18B20` temperature sensor
 
 ## Electric circuit

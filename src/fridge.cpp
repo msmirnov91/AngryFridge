@@ -28,4 +28,3 @@ int Fridge::getTemperature()
 {
   return 0;
 }
-
