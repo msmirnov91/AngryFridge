@@ -1,12 +1,11 @@
 #include "fridge.h"
 
-#define TERMOMETER_INTERVAL 5
 #define COMPRESSOR_INTERVAL 300
 
 
 Fridge::Fridge()
-  : _termometerTimer(TERMOMETER_INTERVAL)
-  , _compressorTimer(COMPRESSOR_INTERVAL)
+  : _compressorTimer(COMPRESSOR_INTERVAL)
+  , _thermometer()
 {}
 
 void Fridge::perform()
@@ -26,5 +25,5 @@ bool Fridge::isCompressorTurnedOn() const
 
 int Fridge::getTemperature()
 {
-  return 0;
+  return _thermometer.getTemp();
 }

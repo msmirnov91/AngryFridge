@@ -1,4 +1,4 @@
-#include "utils/timer.h"
+#include "hardware_modules/ds18b20.h"
 
 
 class Fridge {
@@ -12,7 +12,7 @@ public:
   int getTemperature();
   
 private:
-  Timer _termometerTimer;
   Timer _compressorTimer;
+  DS18B20 _thermometer;
 };
 

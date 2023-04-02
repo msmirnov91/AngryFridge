@@ -7,5 +7,3 @@ private:
     unsigned long _lastReadyTime;
     const unsigned long _interval;
 };
-
-unsigned long millis();

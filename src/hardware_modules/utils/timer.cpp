@@ -1,5 +1,12 @@
 #include "timer.h"
 
+#if (ARDUINO >= 100)
+ #include <Arduino.h>
+#else
+ #include <WProgram.h>
+ #include <pins_arduino.h>
+#endif
+
 
 Timer::Timer(unsigned int intervalSeconds)
     : _interval(intervalSeconds * 1000)
