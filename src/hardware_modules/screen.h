@@ -18,4 +18,3 @@ private:
   
   Adafruit_ILI9341 _tft;
 };
-

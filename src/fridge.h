@@ -15,4 +15,3 @@ private:
   Timer _compressorTimer;
   DS18B20 _thermometer;
 };
-

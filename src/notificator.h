@@ -18,5 +18,3 @@ private:
   Screen _screen;
   DFPlayer _dfplayer;
 };
-
-

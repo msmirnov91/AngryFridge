@@ -65,4 +65,3 @@ String Screen::_utf8rus(const String& source)  // Функция для конв
   }
   return target;
 }
-
