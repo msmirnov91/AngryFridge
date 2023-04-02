@@ -18,7 +18,7 @@ void DS18B20::begin()
 int DS18B20::getTemp()  // TODO: should be int16_t!!!
 {
     if (_requestTimer.ready()) {
-      sensor.requestTemp();
+        sensor.requestTemp();
     }
     return sensor.getTempInt();
 }
