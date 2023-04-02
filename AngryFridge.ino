@@ -7,19 +7,19 @@ Fridge fridge;
 
 void setup()
 {
-  notificator.begin();
+    notificator.begin();
 
-  notificator.onSystemLoading();
-  delay(5000);
-  notificator.onLoadingEnded();
+    notificator.onSystemLoading();
+    delay(5000);
+    notificator.onLoadingEnded();
 }
 
 void loop()
 {
-  notificator.onSystemLoaded();
-  fridge.perform();
+    notificator.onSystemLoaded();
+    fridge.perform();
 
-  notificator.showTemperature(fridge.getTemperature());
-  notificator.showCompressorState(fridge.isCompressorTurnedOn());
+    notificator.showTemperature(fridge.getTemperature());
+    notificator.showCompressorState(fridge.isCompressorTurnedOn());
 }
 

@@ -3,15 +3,15 @@
 
 class Fridge {
 public:
-  Fridge();
+    Fridge();
 
-  void perform();
+    void perform();
 
-  bool doorIsOpen() const;
-  bool isCompressorTurnedOn() const;
-  int getTemperature();
+    bool doorIsOpen() const;
+    bool isCompressorTurnedOn() const;
+    int getTemperature();
   
 private:
-  Timer _compressorTimer;
-  DS18B20 _thermometer;
+    Timer _compressorTimer;
+    DS18B20 _thermometer;
 };

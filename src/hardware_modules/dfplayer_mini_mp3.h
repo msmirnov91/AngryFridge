@@ -4,11 +4,11 @@
 
 class DFPlayer {
 public:
-  DFPlayer();
+    DFPlayer();
 
-  void begin();
+    void begin();
   
 private:
-  SoftwareSerial _softwareSerial;
-  DFRobotDFPlayerMini _player;
+    SoftwareSerial _softwareSerial;
+    DFRobotDFPlayerMini _player;
 };

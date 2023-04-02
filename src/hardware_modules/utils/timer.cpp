@@ -1,10 +1,10 @@
 #include "timer.h"
 
 #if (ARDUINO >= 100)
-  #include <Arduino.h>
+    #include <Arduino.h>
 #else
-  #include <WProgram.h>
-  #include <pins_arduino.h>
+    #include <WProgram.h>
+    #include <pins_arduino.h>
 #endif
 
 
@@ -21,7 +21,7 @@ bool Timer::ready()
 
     bool isReady = passed > _interval;
     if (isReady) {
-        _lastReadyTime = now;
+      _lastReadyTime = now;
     }
 
     return isReady;

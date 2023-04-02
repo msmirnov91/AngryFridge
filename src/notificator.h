@@ -4,17 +4,17 @@
 
 class Notificator {
 public:
-  Notificator();
-  void begin();
+    Notificator();
+    void begin();
   
-  void onSystemLoading();
-  void onLoadingEnded();
-  void onSystemLoaded();
+    void onSystemLoading();
+    void onLoadingEnded();
+    void onSystemLoaded();
 
-  void showTemperature(int temperature);
-  void showCompressorState(bool isOn);
+    void showTemperature(int temperature);
+    void showCompressorState(bool isOn);
 
 private:
-  Screen _screen;
-  DFPlayer _dfplayer;
+    Screen _screen;
+    DFPlayer _dfplayer;
 };

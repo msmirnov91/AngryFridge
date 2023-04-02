@@ -4,8 +4,8 @@
 
 
 Fridge::Fridge()
-  : _compressorTimer(COMPRESSOR_INTERVAL)
-  , _thermometer()
+    : _compressorTimer(COMPRESSOR_INTERVAL)
+    , _thermometer()
 {}
 
 void Fridge::perform()
@@ -15,15 +15,15 @@ void Fridge::perform()
 
 bool Fridge::doorIsOpen() const
 {
-  return false;
+    return false;
 }
 
 bool Fridge::isCompressorTurnedOn() const
 {
-  return false;
+    return false;
 }
 
 int Fridge::getTemperature()
 {
-  return _thermometer.getTemp();
+    return _thermometer.getTemp();
 }
