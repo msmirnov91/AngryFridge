@@ -10,7 +10,7 @@ public:
 
     bool doorIsOpen() const;
     bool isCompressorTurnedOn() const;
-    int getTemperature();
+    float getTemperature();
   
 private:
     Timer _compressorTimer;

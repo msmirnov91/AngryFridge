@@ -29,7 +29,7 @@ void Notificator::onSystemLoaded()
     _screen.printRussianText(55, 80, "Система загружена", ILI9341_GREEN);
 }
 
-void Notificator::showTemperature(int temperature)
+void Notificator::showTemperature(float temperature)
 {
     _screen.printRussianText(40, 120, String(temperature) + " градусов");
 }

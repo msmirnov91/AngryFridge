@@ -16,11 +16,11 @@ void DS18B20::begin()
     delay(1000);
 }
 
-int DS18B20::getTemp()  // TODO: should be float!!!
+float DS18B20::getTemp()
 {	
     if (_requestTimer.ready()) {
         sensor.requestTemp();
     }
-    return sensor.getTempInt();
+    return sensor.getTemp();
 }
   

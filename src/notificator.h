@@ -11,7 +11,7 @@ public:
     void onLoadingEnded();
     void onSystemLoaded();
 
-    void showTemperature(int temperature);
+    void showTemperature(float temperature);
     void showCompressorState(bool isOn);
 
 private:

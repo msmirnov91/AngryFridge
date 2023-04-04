@@ -28,7 +28,7 @@ bool Fridge::isCompressorTurnedOn() const
     return false;
 }
 
-int Fridge::getTemperature()
+float Fridge::getTemperature()
 {
     return _thermometer.getTemp();
 }

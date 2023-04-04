@@ -7,7 +7,7 @@ class DS18B20 {
 public:
     DS18B20(unsigned int requestsInterval = THERMOMETER_INTERVAL);
     void begin();
-    int getTemp();
+    float getTemp();
   
 private:
     Timer _requestTimer;
