@@ -6,3 +6,8 @@
 #define TFT_MISO 12  // NOT CONNECTED
 #define TFT_SDA 11   // MOSI
 #define TFT_CLK 13
+
+#define SOFTWARE_SERIAL_RX 2
+#define SOFTWARE_SERIAL_TX 3
+
+#define THERMOMETER_PIN 4

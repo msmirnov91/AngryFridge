@@ -8,9 +8,10 @@ Fridge fridge;
 void setup()
 {
     notificator.begin();
+    fridge.begin();
 
     notificator.onSystemLoading();
-    delay(5000);
+    delay(3000);
     notificator.onLoadingEnded();
 }
 

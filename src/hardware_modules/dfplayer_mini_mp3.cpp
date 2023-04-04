@@ -1,8 +1,12 @@
 #include "dfplayer_mini_mp3.h"
+#include "pin_defines.h"
 
 
 DFPlayer::DFPlayer()
-    : _softwareSerial(2, 3) // RX, TX
+    : _softwareSerial(
+	    SOFTWARE_SERIAL_RX,
+		SOFTWARE_SERIAL_TX
+	)
     , _player()
 {}
 

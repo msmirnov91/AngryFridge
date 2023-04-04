@@ -4,6 +4,7 @@
 class Fridge {
 public:
     Fridge();
+	void begin();
 
     void perform();
 

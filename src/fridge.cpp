@@ -8,6 +8,11 @@ Fridge::Fridge()
     , _thermometer()
 {}
 
+void Fridge::begin()
+{
+	_thermometer.begin();
+}
+
 void Fridge::perform()
 {
   
