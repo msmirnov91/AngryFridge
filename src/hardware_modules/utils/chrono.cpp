@@ -20,5 +20,5 @@ void Chronometer::reset()
 	
 unsigned long Chronometer::secondsPassed() const
 {
-	return (millis() - _startTime) * 1000;
+	return (millis() - _startTime) / 1000;
 }
