@@ -1,9 +1,12 @@
+#include "chrono.h"
+
+
 class Timer {
 public:
     Timer(unsigned int intervalSeconds);
     bool ready();
 
 private:
-    unsigned long _lastReadyTime;
+    Chronometer _chrono;
     const unsigned long _interval;
 };

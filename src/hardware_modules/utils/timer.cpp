@@ -1,28 +1,18 @@
 #include "timer.h"
 
-#if (ARDUINO >= 100)
-    #include <Arduino.h>
-#else
-    #include <WProgram.h>
-    #include <pins_arduino.h>
-#endif
-
 
 Timer::Timer(unsigned int intervalSeconds)
-    : _interval(intervalSeconds * 1000)
-    , _lastReadyTime(0)
+    : _chrono()
+	, _interval(intervalSeconds)
 {
 }
 
 bool Timer::ready()
 {
-    unsigned long now = millis();
-    unsigned long passed = now - _lastReadyTime;
-
-    bool isReady = passed > _interval;
-    if (isReady) {
-      _lastReadyTime = now;
+    if (_chrono.secondsPassed() > _interval) {
+        _chrono.reset();
+	    return true;
     }
 
-    return isReady;
+    return false;
 }
