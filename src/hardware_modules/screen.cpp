@@ -13,16 +13,21 @@ void Screen::begin()
     _tft.setTextSize(2);
 }
 
-void Screen::printText(uint8_t left, uint8_t top, const String& text, uint16_t color)
+void Screen::printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, uint16_t color, bool transparent)
 {
-    _tft.setTextColor(color);
-    _tft.setCursor(left, top);
+	if (transparent) {
+		_tft.setTextColor(color);
+	}
+	else {
+		_tft.setTextColor(color, ILI9341_BLACK);
+	}
+    _tft.setCursor(leftTopX, leftTopY);
     _tft.print(text);
 }
 
-void Screen::printRussianText(uint8_t left, uint8_t top, const String& text, uint16_t color)
+void Screen::printRussianText(uint8_t leftTopX, uint8_t leftTopY, const String& text, uint16_t color, bool transparent)
 {
-    printText(left, top, _utf8rus(text), color);
+    printText(leftTopX, leftTopY, _utf8rus(text), color, transparent);
 }
 
 void Screen::drawCircle(uint8_t x, uint8_t y, uint8_t radius, uint16_t color)
