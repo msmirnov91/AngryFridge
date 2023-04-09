@@ -1,6 +1,16 @@
 #include "screen.h"
 #include "pin_defines.h"
 
+#define RUSSIAN_LETTER_BEGINNING_BYTE_1 0xD0
+#define RUSSIAN_LETTER_BEGINNING_BYTE_2 0xD1
+#define FIRST_RUSSIAN_LETTERS_RANGE_OFFSET 0x2F
+#define SECOND_RUSSIAN_LETTERS_RANGE_OFFSET 0x6F
+
+#define YO_UPPER_UTF8 0x81
+#define YO_UPPER_WIN1251 0xA8
+#define YO_LOWER_UTF8 0x91
+#define YO_LOWER_WIN1251 0xB7
+
 
 Screen::Screen()
     : _tft(Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_SDA, TFT_CLK, TFT_RST, TFT_MISO))
@@ -47,21 +57,39 @@ String Screen::_utf8ToWin1251(const String& source)
     char m[2] = { '0', '\0' };
     for (int i = 0; i < source.length(); i++) {
 		n = source[i];
-		switch (n) {
-		  case 0xD0: {
-			i++; n = source[i];
-			if (n == 0x81) { n = 0xA8; break; }
-			if (n >= 0x90 && n <= 0xBF) n = n + 0x2F;
-			break;
-		  }
-		  case 0xD1: {
-			i++; n = source[i];
-			if (n == 0x91) { n = 0xB7; break; }
-			if (n >= 0x80 && n <= 0x8F) n = n + 0x6F;
-			break;
-		  }
-		} 
+		if (_isRussianLetterBeginning(n)) {
+			n = _convertRussianLetter(n, source[++i]);
+		}
 		m[0] = n; target = target + String(m);
     }
     return target;
+}
+
+bool Screen::_isRussianLetterBeginning(unsigned char currentByte)
+{
+	return currentByte == RUSSIAN_LETTER_BEGINNING_BYTE_1
+		   || currentByte == RUSSIAN_LETTER_BEGINNING_BYTE_2;
+}
+
+unsigned char Screen::_convertRussianLetter(unsigned char firstByte, unsigned char secondByte)
+{
+	switch (firstByte) {
+	    case RUSSIAN_LETTER_BEGINNING_BYTE_1: {
+		    if (secondByte == YO_UPPER_UTF8) {
+				return YO_UPPER_WIN1251;
+			}
+		    if (secondByte >= 0x90 && secondByte <= 0xBF) {
+				return secondByte + FIRST_RUSSIAN_LETTERS_RANGE_OFFSET;
+		    }
+	    }
+	    case RUSSIAN_LETTER_BEGINNING_BYTE_2: {
+			if (secondByte == YO_LOWER_UTF8) {
+				return YO_LOWER_WIN1251;
+			}
+		    if (secondByte >= 0x80 && secondByte <= 0x8F) {
+				return secondByte + SECOND_RUSSIAN_LETTERS_RANGE_OFFSET;
+		    }
+	    }
+	}
+	return secondByte;
 }

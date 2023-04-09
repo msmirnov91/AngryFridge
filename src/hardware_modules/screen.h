@@ -15,6 +15,8 @@ public:
 
 private:
     String _utf8ToWin1251(const String& source);
+	bool _isRussianLetterBeginning(unsigned char currentByte);
+	unsigned char _convertRussianLetter(unsigned char firstByte, unsigned char secondByte);
   
     Adafruit_ILI9341 _tft;
 };

@@ -17,7 +17,7 @@ void Notificator::onSystemLoading()
     _screen.printRussianText(55, 5, "Загрузка системы...", ILI9341_WHITE, true);
     // _screen.drawCircle(160, 120, 15, ILI9341_YELLOW);
 	
-	_screen.printRussianText(2, 80, "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШ", ILI9341_WHITE, true);
+	_screen.printRussianText(2, 110, "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШ", ILI9341_WHITE, true);
 	_screen.printRussianText(2, 130, "ЩЪЬЭЮЯабвгдеёжзийклмнопрст", ILI9341_WHITE, true);
 	_screen.printRussianText(2, 150, "уфхцчшщъьэюяыЫ", ILI9341_WHITE, true);
 	
