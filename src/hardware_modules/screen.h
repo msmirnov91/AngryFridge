@@ -14,7 +14,7 @@ public:
     void fillScreen(uint16_t color);
 
 private:
-    String _utf8rus(const String& source);  // Функция для конвертации русских символов из двубайтовой кодировки в однобайтовую
+    String _utf8ToWin1251(const String& source);
   
     Adafruit_ILI9341 _tft;
 };

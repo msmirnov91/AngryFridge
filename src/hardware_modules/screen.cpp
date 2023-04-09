@@ -27,7 +27,7 @@ void Screen::printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, u
 
 void Screen::printRussianText(uint8_t leftTopX, uint8_t leftTopY, const String& text, uint16_t color, bool transparent)
 {
-    printText(leftTopX, leftTopY, _utf8rus(text), color, transparent);
+    printText(leftTopX, leftTopY, _utf8ToWin1251(text), color, transparent);
 }
 
 void Screen::drawCircle(uint8_t x, uint8_t y, uint8_t radius, uint16_t color)
@@ -40,7 +40,7 @@ void Screen::fillScreen(uint16_t color)
     _tft.fillScreen(color);
 }
 
-String Screen::_utf8rus(const String& source)  // Функция для конвертации русских символов из двубайтовой кодировки в однобайтовую
+String Screen::_utf8ToWin1251(const String& source)  // Функция для конвертации русских символов из двубайтовой кодировки в однобайтовую
 {
     int i,k;
     String target;
