@@ -42,22 +42,20 @@ void Screen::fillScreen(uint16_t color)
 
 String Screen::_utf8ToWin1251(const String& source)
 {
-    int i,k;
     String target;
     unsigned char n;
     char m[2] = { '0', '\0' };
-    k = source.length(); i = 0;
-    while (i < k) {
-		n = source[i]; i++;
+    for (int i = 0; i < source.length(); i++) {
+		n = source[i];
 		switch (n) {
 		  case 0xD0: {
-			n = source[i]; i++;
+			i++; n = source[i];
 			if (n == 0x81) { n = 0xA8; break; }
 			if (n >= 0x90 && n <= 0xBF) n = n + 0x2F;
 			break;
 		  }
 		  case 0xD1: {
-			n = source[i]; i++;
+			i++; n = source[i];
 			if (n == 0x91) { n = 0xB7; break; }
 			if (n >= 0x80 && n <= 0x8F) n = n + 0x6F;
 			break;
