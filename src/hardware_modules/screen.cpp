@@ -53,6 +53,7 @@ void Screen::fillScreen(uint16_t color)
 String Screen::_utf8ToWin1251(const String& source)
 {
     String target;
+	target.reserve(source.length());
     unsigned char n;
     char m[2] = { '0', '\0' };
     for (int i = 0; i < source.length(); i++) {
