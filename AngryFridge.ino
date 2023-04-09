@@ -11,7 +11,7 @@ void setup()
     fridge.begin();
 
     notificator.onSystemLoading();
-    delay(2000);
+    delay(10000);
     notificator.onLoadingEnded();
 }
 
