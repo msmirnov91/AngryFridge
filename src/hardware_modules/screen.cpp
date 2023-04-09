@@ -40,7 +40,7 @@ void Screen::fillScreen(uint16_t color)
     _tft.fillScreen(color);
 }
 
-String Screen::_utf8ToWin1251(const String& source)  // Функция для конвертации русских символов из двубайтовой кодировки в однобайтовую
+String Screen::_utf8ToWin1251(const String& source)
 {
     int i,k;
     String target;
