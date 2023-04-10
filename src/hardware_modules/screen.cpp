@@ -1,15 +1,17 @@
 #include "screen.h"
 #include "pin_defines.h"
 
+#define ALBUM_ORIENTATION 1
+
 #define RUSSIAN_LETTER_BEGINNING_BYTE_1 0xD0
 #define RUSSIAN_LETTER_BEGINNING_BYTE_2 0xD1
 #define FIRST_RUSSIAN_LETTERS_RANGE_OFFSET 0x2F
 #define SECOND_RUSSIAN_LETTERS_RANGE_OFFSET 0x6F
 
-#define YO_UPPER_UTF8 0x81
-#define YO_UPPER_WIN1251 0xA8
-#define YO_LOWER_UTF8 0x91
-#define YO_LOWER_WIN1251 0xB7
+#define YO_UPPER_TWO_BYTES 0x81
+#define YO_UPPER_ONE_BYTE 0xA8
+#define YO_LOWER_TWO_BYTES 0x91
+#define YO_LOWER_ONE_BYTE 0xB7
 
 
 Screen::Screen()
@@ -19,7 +21,7 @@ Screen::Screen()
 void Screen::begin()
 {
     _tft.begin();
-    _tft.setRotation(1);  // Album orientation
+    _tft.setRotation(ALBUM_ORIENTATION);
     _tft.setTextSize(2);
 }
 
@@ -54,15 +56,16 @@ String Screen::_utf8ToWin1251(const String& source)
 {
     String target;
 	target.reserve(source.length());
-    unsigned char n;
-    char m[2] = { '0', '\0' };
-    for (int i = 0; i < source.length(); i++) {
-		n = source[i];
+
+    for (int i = 0; i < source.length(); i++) {	
+		unsigned char n = source[i];
 		if (_isRussianLetterBeginning(n)) {
 			n = _convertRussianLetter(n, source[++i]);
 		}
-		m[0] = n; target = target + String(m);
+		char m[2] = { n, '\0' };
+		target = target + String(m);
     }
+	
     return target;
 }
 
@@ -76,16 +79,16 @@ unsigned char Screen::_convertRussianLetter(unsigned char firstByte, unsigned ch
 {
 	switch (firstByte) {
 	    case RUSSIAN_LETTER_BEGINNING_BYTE_1: {
-		    if (secondByte == YO_UPPER_UTF8) {
-				return YO_UPPER_WIN1251;
+		    if (secondByte == YO_UPPER_TWO_BYTES) {
+				return YO_UPPER_ONE_BYTE;
 			}
 		    if (secondByte >= 0x90 && secondByte <= 0xBF) {
 				return secondByte + FIRST_RUSSIAN_LETTERS_RANGE_OFFSET;
 		    }
 	    }
 	    case RUSSIAN_LETTER_BEGINNING_BYTE_2: {
-			if (secondByte == YO_LOWER_UTF8) {
-				return YO_LOWER_WIN1251;
+			if (secondByte == YO_LOWER_TWO_BYTES) {
+				return YO_LOWER_ONE_BYTE;
 			}
 		    if (secondByte >= 0x80 && secondByte <= 0x8F) {
 				return secondByte + SECOND_RUSSIAN_LETTERS_RANGE_OFFSET;
