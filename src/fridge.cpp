@@ -18,9 +18,9 @@ void Fridge::perform()
   
 }
 
-bool Fridge::doorIsOpen() const
+unsigned long Fridge::doorOpenTime() const
 {
-    return false;
+    return 0;
 }
 
 bool Fridge::isCompressorTurnedOn() const
