@@ -13,6 +13,9 @@ public:
     float getTemperature();
   
 private:
+    void _switchCompressorState(int state);
+
     Timer _compressorTimer;
+    Chronometer _doorChrono;
     DS18B20 _thermometer;
 };
