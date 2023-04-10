@@ -7,8 +7,8 @@ public:
     DFPlayer();
 
     void begin();
-	
-	void interrupt();
+    
+    void interrupt();
   
 private:
     SoftwareSerial _softwareSerial;

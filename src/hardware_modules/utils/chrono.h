@@ -1,8 +1,8 @@
 class Chronometer {
 public:
     Chronometer();
-	
-	void reset();
+    
+    void reset();
     unsigned long secondsPassed() const;
 
 private:

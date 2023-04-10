@@ -18,9 +18,9 @@
 
 DFPlayer::DFPlayer()
     : _softwareSerial(
-	    SOFTWARE_SERIAL_RX,
-		SOFTWARE_SERIAL_TX
-	)
+        SOFTWARE_SERIAL_RX,
+        SOFTWARE_SERIAL_TX
+    )
     , _player()
 {}
 
@@ -29,7 +29,7 @@ void DFPlayer::begin()
     _softwareSerial.begin(9600);
 
     if (!_player.begin(_softwareSerial)) {
-		// handle the error
+        // handle the error
     }
 
     _player.volume(SOUND_LOUD);  //Set volume value. From 0 to 30
@@ -38,5 +38,5 @@ void DFPlayer::begin()
 
 void DFPlayer::interrupt()
 {
-	_player.stop();
+    _player.stop();
 }

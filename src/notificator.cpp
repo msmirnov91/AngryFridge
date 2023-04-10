@@ -48,6 +48,6 @@ void Notificator::showCompressorState(bool isOn)
 
 void Notificator::interruptNotification()
 {
-	_dfplayer.interrupt();
-}	
+    _dfplayer.interrupt();
+}    
  

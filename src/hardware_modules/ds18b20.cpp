@@ -17,7 +17,7 @@ void DS18B20::begin()
 }
 
 float DS18B20::getTemp()
-{	
+{    
     if (_requestTimer.ready()) {
         sensor.requestTemp();
     }

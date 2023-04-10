@@ -10,15 +10,15 @@
 
 Chronometer::Chronometer()
 {
-	reset();
+    reset();
 }
 
 void Chronometer::reset()
 {
-	_startTime = millis();
+    _startTime = millis();
 }
-	
+    
 unsigned long Chronometer::secondsPassed() const
 {
-	return (millis() - _startTime) / 1000;
+    return (millis() - _startTime) / 1000;
 }

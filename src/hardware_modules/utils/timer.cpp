@@ -3,7 +3,7 @@
 
 Timer::Timer(unsigned int intervalSeconds)
     : _chrono()
-	, _interval(intervalSeconds)
+    , _interval(intervalSeconds)
 {
 }
 
@@ -11,7 +11,7 @@ bool Timer::ready()
 {
     if (_chrono.secondsPassed() > _interval) {
         _chrono.reset();
-	    return true;
+        return true;
     }
 
     return false;

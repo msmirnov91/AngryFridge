@@ -10,7 +10,7 @@ Fridge::Fridge()
 
 void Fridge::begin()
 {
-	_thermometer.begin();
+    _thermometer.begin();
 }
 
 void Fridge::perform()

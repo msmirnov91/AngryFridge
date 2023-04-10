@@ -13,8 +13,8 @@ public:
 
     void showTemperature(float temperature);
     void showCompressorState(bool isOn);
-	
-	void interruptNotification();
+    
+    void interruptNotification();
 
 private:
     Screen _screen;
