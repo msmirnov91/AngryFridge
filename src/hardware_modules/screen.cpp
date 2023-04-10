@@ -53,12 +53,12 @@ String Screen::_utf8ToWin1251(const String& source)
 	target.reserve(source.length());
 
     for (int i = 0; i < source.length(); i++) {	
-		unsigned char n = source[i];
+		char n = source[i];
 		if (_isRussianLetterBeginning(n)) {
 			n = _convertRussianLetter(n, source[++i]);
 		}
-		char m[2] = { n, '\0' };
-		target = target + String(m);
+		char tmp[2] = { n, '\0' };
+		target = target + String(tmp);
     }
 	
     return target;
