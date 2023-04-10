@@ -45,4 +45,9 @@ void Notificator::showCompressorState(bool isOn)
     }
     _screen.printText(40, 140, msg);
 }
+
+void Notificator::interruptNotification()
+{
+	_dfplayer.interrupt();
+}	
  

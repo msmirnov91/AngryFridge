@@ -35,3 +35,8 @@ void DFPlayer::begin()
     _player.volume(SOUND_LOUD);  //Set volume value. From 0 to 30
     _player.play(THANK_YOU);  //Play the first mp3
 }
+
+void DFPlayer::interrupt()
+{
+	_player.stop();
+}
