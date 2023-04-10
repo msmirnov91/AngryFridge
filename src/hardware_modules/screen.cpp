@@ -34,12 +34,7 @@ void Screen::printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, u
 		_tft.setTextColor(color, ILI9341_BLACK);
 	}
     _tft.setCursor(leftTopX, leftTopY);
-    _tft.print(text);
-}
-
-void Screen::printRussianText(uint8_t leftTopX, uint8_t leftTopY, const String& text, uint16_t color, bool transparent)
-{
-    printText(leftTopX, leftTopY, _utf8ToWin1251(text), color, transparent);
+    _tft.print(_utf8ToWin1251(text));
 }
 
 void Screen::drawCircle(uint8_t x, uint8_t y, uint8_t radius, uint16_t color)
