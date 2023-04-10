@@ -15,14 +15,7 @@ void Notificator::begin()
 void Notificator::onSystemLoading()
 {
     _screen.printRussianText(55, 5, "Загрузка системы...", ILI9341_WHITE, true);
-    // _screen.drawCircle(160, 120, 15, ILI9341_YELLOW);
-	
-	_screen.printRussianText(2, 110, "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШ", ILI9341_WHITE, true);
-	_screen.printRussianText(2, 130, "ЩЪЬЭЮЯабвгдеёжзийклмнопрст", ILI9341_WHITE, true);
-	_screen.printRussianText(2, 150, "уфхцчшщъьэюяыЫ", ILI9341_WHITE, true);
-	_screen.printRussianText(0, 180, "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ1234567890", ILI9341_WHITE, true);
-	
-
+    _screen.drawCircle(160, 120, 15, ILI9341_YELLOW);
     _screen.printText(4, 220, "Powered by DCP Electronics", ILI9341_GREEN, true);
 }
 
