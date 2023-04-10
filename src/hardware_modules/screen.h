@@ -12,7 +12,7 @@ public:
     void fillScreen(uint16_t color);
 
 private:
-    String _utf8ToWin1251(const String& source);
+    String _utf8ToTFTEncoding(const String& source);
 	bool _isRussianLetterBeginning(unsigned char currentByte);
 	unsigned char _convertRussianLetter(unsigned char firstByte, unsigned char secondByte);
   

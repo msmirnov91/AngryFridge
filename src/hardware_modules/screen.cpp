@@ -34,7 +34,7 @@ void Screen::printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, u
 		_tft.setTextColor(color, ILI9341_BLACK);
 	}
     _tft.setCursor(leftTopX, leftTopY);
-    _tft.print(_utf8ToWin1251(text));
+    _tft.print(_utf8ToTFTEncoding(text));
 }
 
 void Screen::drawCircle(uint8_t x, uint8_t y, uint8_t radius, uint16_t color)
@@ -47,8 +47,19 @@ void Screen::fillScreen(uint16_t color)
     _tft.fillScreen(color);
 }
 
-String Screen::_utf8ToWin1251(const String& source)
+String Screen::_utf8ToTFTEncoding(const String& source)
 {
+	/*
+	    It looks like TFT display library accepts russian letters
+	    in very similar to windows 1251 one-byte encoding. Symbols in it
+	    are shifted by 1 relatively to windows 1251, so that offset
+		between utf-8 byte and this encoding byte is less by 1 too
+        (0x2F instead of 0x30 and 0x6F instead of 0x70).
+		For more information see:
+		
+		https://arduino.ru/forum/programmirovanie/rusifikatsiya-biblioteki-adafruit-gfx-i-vyvod-russkikh-bukv-na-displei-v-kodi
+		https://wiki.iarduino.ru/page/encoding-arduino/
+	*/
     String target;
 	target.reserve(source.length());
 
