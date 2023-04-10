@@ -60,18 +60,21 @@ String Screen::_utf8ToTFTEncoding(const String& source)
 		https://arduino.ru/forum/programmirovanie/rusifikatsiya-biblioteki-adafruit-gfx-i-vyvod-russkikh-bukv-na-displei-v-kodi
 		https://wiki.iarduino.ru/page/encoding-arduino/
 	*/
-    String target;
-	target.reserve(source.length());
+	char* tmp = new char[source.length() + 1];
+	for (int i = 0; i < source.length() + 1; i++) {
+		tmp[i] = 0;
+	}
 
-    for (int i = 0; i < source.length(); i++) {	
+    for (int i = 0, k = 0; i < source.length(); i++, k++) {	
 		char n = source[i];
 		if (_isRussianLetterBeginning(n)) {
 			n = _convertRussianLetter(n, source[++i]);
 		}
-		char tmp[2] = { n, '\0' };
-		target = target + String(tmp);
+		tmp[k] = n;
     }
 	
+	String target(tmp); // try to avoid multiple allocations
+	delete[] tmp;
     return target;
 }
 
