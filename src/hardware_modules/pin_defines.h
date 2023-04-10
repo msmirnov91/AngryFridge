@@ -1,3 +1,10 @@
+#if (ARDUINO >= 100)
+    #include <Arduino.h>
+#else
+    #include <WProgram.h>
+    #include <pins_arduino.h>
+#endif
+
 #define TFT_DC 9
 #define TFT_CS 10
 #define TFT_RST 8
@@ -11,3 +18,5 @@
 #define SOFTWARE_SERIAL_TX 3
 
 #define THERMOMETER_PIN 4
+#define COMPRESSOR_PIN 5
+#define DOOR_PIN 6
