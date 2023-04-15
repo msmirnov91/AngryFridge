@@ -14,6 +14,7 @@ void Notificator::begin()
 
 void Notificator::onSystemLoading()
 {
+    _dfplayer.playWithoutRepeats(DFPlayer::Message::SYSTEM_LOADING);
     _screen.printText(55, 5, "Загрузка системы...", ILI9341_WHITE, true);
     _screen.drawCircle(160, 120, 15, ILI9341_YELLOW);
     _screen.printText(4, 220, "Powered by DCP Electronics", ILI9341_GREEN, true);
@@ -26,6 +27,7 @@ void Notificator::onLoadingEnded()
 
 void Notificator::onSystemLoaded()
 {
+    _dfplayer.playWithoutRepeats(DFPlayer::Message::SYSTEM_LOADED);
     _screen.printText(55, 80, "Система загружена", ILI9341_GREEN);
 }
 
@@ -45,9 +47,3 @@ void Notificator::showCompressorState(bool isOn)
     }
     _screen.printText(40, 140, msg);
 }
-
-void Notificator::interruptNotification()
-{
-    _dfplayer.interrupt();
-}    
- 
