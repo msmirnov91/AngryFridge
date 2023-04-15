@@ -18,3 +18,6 @@ Currently supports only `Arduion Uno`. `Mega` and `Nano` will be supported later
 
 ## Electric circuit
 not developed yet
+
+## Sounds
+Click [here](https://voxworker.com/ru) to generate mp3 by text
