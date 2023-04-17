@@ -11,20 +11,20 @@ public:
         BYE       = 2,
         THANK_YOU = 3,
         
-        SYSTEM_LOADING = 10,
-        SYSTEM_LOADED  = 11,
-        HEM_ON         = 12,
-        HEM_OFF        = 13,
+        SYSTEM_LOADING = 4,
+        SYSTEM_LOADED  = 5,
+        HEM_ON         = 6,
+        HEM_OFF        = 7,
         
-        EIGHT_THOUSAND_VOLTS = 50,
-        NO_MEAL_AFTER_6_PM   = 51,
-        TOO_MUCH_BEER        = 52,
+        EIGHT_THOUSAND_VOLTS = 8,
+        NO_MEAL_AFTER_6_PM   = 9,
+        TOO_MUCH_BEER        = 10,
         
-        CLOSE_THE_DOOR_POLITE  = 100,
-        CLOSE_THE_DOOR_NERVOUS = 101,
-        THATS_BETTER           = 102,
-        CLOSE_THE_DOOR_ANGRY   = 103,
-        AT_LEAST               = 104,
+        CLOSE_THE_DOOR_POLITE  = 11,
+        CLOSE_THE_DOOR_NERVOUS = 12,
+        THATS_BETTER           = 13,
+        CLOSE_THE_DOOR_ANGRY   = 14,
+        AT_LEAST               = 15,
     };
     
     enum Volume {

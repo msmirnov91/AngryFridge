@@ -8,7 +8,7 @@ Currently supports only `Arduion Uno`. `Mega` and `Nano` will be supported later
 ## Used libraries
 - `Adafruit_GFX` [github](https://github.com/adafruit/Adafruit-GFX-Library)
 - `Adafruit_ILI9341` [github](https://github.com/adafruit/Adafruit_ILI9341)
-- `DFPlayer Mini mp3 Arduino Library` [download](https://iarduino.ru/file/140.html)
+- `DFPlayer Mini mp3 Arduino Library` [download](https://iarduino.ru/file/140.html) NB: tracks get their numbers from the order in which they were copied to SD card, so to keep the strict order one should copy files one by one. For more info click [here](https://compacttool.ru/miniatyurniy-stereo-audio-mp3-pleer-dfplayer-mini-dfrobot).
 - `microDS18B20` [github](https://github.com/GyverLibs/microDS18B20)
 
 ## Used hardware
