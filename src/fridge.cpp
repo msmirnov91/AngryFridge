@@ -39,7 +39,7 @@ void Fridge::perform()
     }
 }
 
-unsigned long Fridge::doorOpenTime() const
+unsigned long Fridge::doorOpenSeconds() const
 {
     return _doorChrono.secondsPassed();
 }

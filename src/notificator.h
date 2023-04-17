@@ -13,6 +13,17 @@ public:
 
     void showTemperature(float temperature);
     void showCompressorState(bool isOn);
+    
+    enum Severity {
+        NONE,
+        POLITE,
+        NERVOUS,
+        ANGRY,
+        HEM,
+    };
+    
+    void askCloseTheDoor(Severity sev);
+    void notifyDoorIsClosed(Severity sev);
 
 private:
     Screen _screen;

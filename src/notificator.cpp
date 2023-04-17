@@ -47,3 +47,11 @@ void Notificator::showCompressorState(bool isOn)
     }
     _screen.printText(40, 140, msg);
 }
+
+void Notificator::askCloseTheDoor(Notificator::Severity sev)
+{
+}
+
+void Notificator::notifyDoorIsClosed(Notificator::Severity sev)
+{
+}
