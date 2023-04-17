@@ -19,9 +19,6 @@ void Fridge::begin()
     pinMode(DOOR_PIN, INPUT);
 
     _thermometer.begin();
-    if (_thermometer.getTemp() > TEMPERATURE_UPPER_BOUND) {
-        digitalWrite(COMPRESSOR_PIN, HIGH);
-    }
 }
 
 void Fridge::perform()
@@ -56,7 +53,8 @@ float Fridge::getTemperature()
 
 void Fridge::_switchCompressorState(int state)
 {
-    if (digitalRead(COMPRESSOR_PIN) != state && _compressorTimer.ready()) {
-        digitalWrite(COMPRESSOR_PIN, state);
+    if (state == HIGH && !_compressorTimer.ready()) {
+        return;
     }
+    digitalWrite(COMPRESSOR_PIN, state);
 }
