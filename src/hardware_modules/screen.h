@@ -7,7 +7,8 @@ public:
     Screen();
     void begin();
   
-    void printText(uint8_t leftTopX, uint8_t top, const String& text, uint16_t color = ILI9341_WHITE, bool transparent = false);
+    void printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, uint16_t color = ILI9341_WHITE, bool transparent = false);
+    uint8_t getMinimumTextInterval() const;
     void fillScreen(uint16_t color);
 
 private:

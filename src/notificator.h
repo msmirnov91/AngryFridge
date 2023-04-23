@@ -10,9 +10,7 @@ public:
     void onSystemLoading();
     void onLoadingEnded();
 
-    void showTemperature(float temperature);
-    void showCompressorState(bool isOn);
-    void showDoorState(bool isClosed);
+    void showStateBlock(float temperature, bool compressorIsOn, bool doorIsClosed);
     
     enum Severity {
         NONE,
@@ -27,6 +25,8 @@ public:
     void notifyDoorIsClosed();
 
 private:
+    String _booleanStateMsg(bool value, String name, String trueState, String falseState);
+    
     Screen _screen;
     DFPlayer _dfplayer;
     

@@ -1,5 +1,8 @@
 #include "notificator.h"
 
+#define UPPER_STATE_BLOCK_BORDER 80
+#define LEFT_STATE_BLOCK_BORDER 70
+
 
 Notificator::Notificator()
     : _screen()
@@ -31,33 +34,20 @@ void Notificator::onLoadingEnded()
     _screen.fillScreen(ILI9341_BLACK);
 }
 
-void Notificator::showTemperature(float temperature)
+void Notificator::showStateBlock(float temperature, bool compressorIsOn, bool doorIsClosed)
 {
-    _screen.printText(70, 80, String(temperature) + " градусов");
-}
-
-void Notificator::showCompressorState(bool isOn)
-{
-    String msg = "Компрессор ";
-    if (isOn) {
-      msg += "вкл "; // need extra space to override other message
-    }
-    else {
-      msg += "выкл";
-    }
-    _screen.printText(70, 100, msg);
-}
-
-void Notificator::showDoorState(bool isClosed)
-{
-    String msg = "Дверь ";
-    if (isClosed) {
-      msg += "закрыта";
-    }
-    else {
-      msg += "открыта";
-    }
-    _screen.printText(70, 120, msg);
+    const uint8_t interval = _screen.getMinimumTextInterval();
+    
+    uint8_t leftTopY = UPPER_STATE_BLOCK_BORDER;
+    _screen.printText(LEFT_STATE_BLOCK_BORDER, leftTopY, String(temperature) + " градусов");
+     
+    String compressorMessage = _booleanStateMsg(compressorIsOn, "Компрессор", "вкл", "выкл");
+    leftTopY += interval;
+    _screen.printText(LEFT_STATE_BLOCK_BORDER, leftTopY, compressorMessage);
+    
+    String doorMessage = _booleanStateMsg(doorIsClosed, "Дверь", "закрыта", "открыта");
+    leftTopY += interval;
+    _screen.printText(LEFT_STATE_BLOCK_BORDER, leftTopY, doorMessage);
 }
 
 void Notificator::askCloseTheDoor(Notificator::Severity sev)
@@ -102,4 +92,33 @@ void Notificator::notifyDoorIsClosed()
     
     _doorOpenSeverity = Notificator::Severity::NONE;
     _shouldNotifyWhenDoorIsClosed = false;
+}
+
+String Notificator::_booleanStateMsg(bool value, String name, String trueState, String falseState)
+{
+    uint8_t baseLength = name.length() + 1; // one extra for space
+    uint8_t maxStateLength = max(trueState.length(), falseState.length());
+    
+    String result = "";
+    result.reserve(baseLength + maxStateLength); 
+    
+    result += name;
+    result += " ";
+ 
+    uint8_t stateLength = 0;
+    if (value) {
+      result += trueState;
+      stateLength = trueState.length();
+    }
+    else {
+      result += falseState;
+      stateLength = falseState.length();
+    }
+    
+    // to avoid text overlap all messages must have the same length
+    for (int i = baseLength + stateLength; i < baseLength + maxStateLength; i++) {
+        result += " ";
+    }
+    
+    return result;
 }

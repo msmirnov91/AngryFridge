@@ -37,6 +37,11 @@ void Screen::printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, u
     _tft.print(_utf8ToTFTEncoding(text));
 }
 
+uint8_t Screen::getMinimumTextInterval() const
+{
+    return 20; // TODO: fix this according current text size
+}
+
 void Screen::fillScreen(uint16_t color)
 {
     _tft.fillScreen(color);
