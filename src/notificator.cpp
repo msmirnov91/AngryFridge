@@ -40,7 +40,7 @@ void Notificator::showCompressorState(bool isOn)
 {
     String msg = "Компрессор ";
     if (isOn) {
-      msg += "вкл";
+      msg += "вкл "; // need extra space to override other message
     }
     else {
       msg += "выкл";
