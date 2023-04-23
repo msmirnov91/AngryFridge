@@ -25,7 +25,8 @@ public:
     void notifyDoorIsClosed();
 
 private:
-    String _booleanStateMsg(bool value, String name, String trueState, String falseState);
+    String _booleanValueMsg(bool value, String name, String trueState, String falseState);
+    void _printStateBlockMsg(uint8_t lineNumber, String msg);
     
     Screen _screen;
     DFPlayer _dfplayer;

@@ -36,18 +36,9 @@ void Notificator::onLoadingEnded()
 
 void Notificator::showStateBlock(float temperature, bool compressorIsOn, bool doorIsClosed)
 {
-    const uint8_t interval = _screen.getMinimumTextInterval();
-    
-    uint8_t leftTopY = UPPER_STATE_BLOCK_BORDER;
-    _screen.printText(LEFT_STATE_BLOCK_BORDER, leftTopY, String(temperature) + " градусов");
-     
-    String compressorMessage = _booleanStateMsg(compressorIsOn, "Компрессор", "вкл", "выкл");
-    leftTopY += interval;
-    _screen.printText(LEFT_STATE_BLOCK_BORDER, leftTopY, compressorMessage);
-    
-    String doorMessage = _booleanStateMsg(doorIsClosed, "Дверь", "закрыта", "открыта");
-    leftTopY += interval;
-    _screen.printText(LEFT_STATE_BLOCK_BORDER, leftTopY, doorMessage);
+    _printStateBlockMsg(0, String(temperature) + " градусов");
+    _printStateBlockMsg(1, _booleanValueMsg(compressorIsOn, "Компрессор", "вкл", "выкл"));
+    _printStateBlockMsg(2, _booleanValueMsg(doorIsClosed, "Дверь", "закрыта", "открыта"));
 }
 
 void Notificator::askCloseTheDoor(Notificator::Severity sev)
@@ -94,7 +85,7 @@ void Notificator::notifyDoorIsClosed()
     _shouldNotifyWhenDoorIsClosed = false;
 }
 
-String Notificator::_booleanStateMsg(bool value, String name, String trueState, String falseState)
+String Notificator::_booleanValueMsg(bool value, String name, String trueState, String falseState)
 {
     uint8_t baseLength = name.length() + 1; // one extra for space
     uint8_t maxStateLength = max(trueState.length(), falseState.length());
@@ -121,4 +112,10 @@ String Notificator::_booleanStateMsg(bool value, String name, String trueState, 
     }
     
     return result;
+}
+
+void Notificator::_printStateBlockMsg(uint8_t lineNumber, String msg)
+{
+    uint8_t leftTopY = UPPER_STATE_BLOCK_BORDER + lineNumber * _screen.getMinimumTextInterval(); // TODO: check for overflows!
+    _screen.printText(LEFT_STATE_BLOCK_BORDER, leftTopY, msg);
 }
