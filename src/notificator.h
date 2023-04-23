@@ -12,6 +12,7 @@ public:
 
     void showTemperature(float temperature);
     void showCompressorState(bool isOn);
+    void showDoorState(bool isClosed);
     
     enum Severity {
         NONE,

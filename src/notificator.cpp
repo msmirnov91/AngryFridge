@@ -48,6 +48,18 @@ void Notificator::showCompressorState(bool isOn)
     _screen.printText(70, 100, msg);
 }
 
+void Notificator::showDoorState(bool isClosed)
+{
+    String msg = "Дверь ";
+    if (isClosed) {
+      msg += "закрыта";
+    }
+    else {
+      msg += "открыта";
+    }
+    _screen.printText(70, 120, msg);
+}
+
 void Notificator::askCloseTheDoor(Notificator::Severity sev)
 {
     _doorOpenSeverity = sev;

@@ -24,6 +24,7 @@ void loop()
 
     notificator.showTemperature(fridge.getTemperature());
     notificator.showCompressorState(fridge.isCompressorTurnedOn());
+    notificator.showDoorState(fridge.doorIsClosed());
 
     if (!fridge.doorIsClosed()) {
         unsigned long doorOpenSeconds = fridge.doorOpenSeconds();
