@@ -8,6 +8,9 @@
 #define COMPRESSOR_ON LOW
 #define COMPRESSOR_OFF HIGH
 
+#define DOOR_CLOSED LOW
+#define DOOR_OPENED HIGH
+
 #define DOOR_IS_CLOSED_SECONDS_THRESHOLD 1
 
 
@@ -37,7 +40,7 @@ void Fridge::perform()
         _switchCompressorState(COMPRESSOR_OFF);
     }
     
-    if (digitalRead(DOOR_PIN) == LOW) {
+    if (digitalRead(DOOR_PIN) == DOOR_CLOSED) {
         _doorChrono.reset();
     }
 }
