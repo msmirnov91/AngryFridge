@@ -37,11 +37,6 @@ void Screen::printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, u
     _tft.print(_utf8ToTFTEncoding(text));
 }
 
-void Screen::drawCircle(uint8_t x, uint8_t y, uint8_t radius, uint16_t color)
-{
-    _tft.fillCircle(x, y, radius, color);
-}
-
 void Screen::fillScreen(uint16_t color)
 {
     _tft.fillScreen(color);

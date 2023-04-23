@@ -9,7 +9,6 @@ public:
   
     void onSystemLoading();
     void onLoadingEnded();
-    void onSystemLoaded();
 
     void showTemperature(float temperature);
     void showCompressorState(bool isOn);

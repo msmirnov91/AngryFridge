@@ -13,16 +13,13 @@ Fridge fridge;
 void setup()
 {
     notificator.begin();
-    fridge.begin();
-
     notificator.onSystemLoading();
-    delay(2000);
+    fridge.begin();
     notificator.onLoadingEnded();
 }
 
 void loop()
 {
-    notificator.onSystemLoaded();
     fridge.perform();
 
     notificator.showTemperature(fridge.getTemperature());
