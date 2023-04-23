@@ -5,6 +5,8 @@
 
 #define TEMPERATURE_LOWER_BOUND 0
 #define TEMPERATURE_UPPER_BOUND 10
+#define COMPRESSOR_ON LOW
+#define COMPRESSOR_OFF HIGH
 
 #define DOOR_IS_CLOSED_SECONDS_THRESHOLD 1
 
@@ -18,6 +20,8 @@ Fridge::Fridge()
 void Fridge::begin()
 {
     pinMode(COMPRESSOR_PIN, OUTPUT);
+    digitalWrite(COMPRESSOR_PIN, COMPRESSOR_OFF);
+    
     pinMode(DOOR_PIN, INPUT);
 
     _thermometer.begin();
@@ -27,10 +31,10 @@ void Fridge::perform()
 {
     float temperature = getTemperature();
     if (temperature > TEMPERATURE_UPPER_BOUND && !isCompressorTurnedOn()) {
-        _switchCompressorState(HIGH);
+        _switchCompressorState(COMPRESSOR_ON);
     }
     else if (temperature < TEMPERATURE_LOWER_BOUND && isCompressorTurnedOn()) {
-        _switchCompressorState(LOW);
+        _switchCompressorState(COMPRESSOR_OFF);
     }
     
     if (digitalRead(DOOR_PIN) == LOW) {
@@ -50,7 +54,7 @@ bool Fridge::doorIsClosed() const
 
 bool Fridge::isCompressorTurnedOn() const
 {
-    return digitalRead(COMPRESSOR_PIN) == HIGH;
+    return digitalRead(COMPRESSOR_PIN) == COMPRESSOR_ON;
 }
 
 float Fridge::getTemperature()
@@ -60,7 +64,7 @@ float Fridge::getTemperature()
 
 void Fridge::_switchCompressorState(int state)
 {
-    if (state == HIGH && !_compressorTimer.ready()) {
+    if (state == COMPRESSOR_ON && !_compressorTimer.ready()) {
         return;
     }
     digitalWrite(COMPRESSOR_PIN, state);
