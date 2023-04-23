@@ -47,12 +47,16 @@ void Notificator::askCloseTheDoor(Notificator::Severity sev)
     
     switch (_doorOpenSeverity) {
         case Notificator::Severity::POLITE:
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::CLOSE_THE_DOOR_POLITE);
             break;
         case Notificator::Severity::NERVOUS:
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::CLOSE_THE_DOOR_NERVOUS);
             break;
         case Notificator::Severity::ANGRY:
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::CLOSE_THE_DOOR_ANGRY);
             break;
         case Notificator::Severity::HEM:
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::HEM_ON);
             break;
         default:
             return;
@@ -70,12 +74,16 @@ void Notificator::notifyDoorIsClosed()
 {
     switch (_doorOpenSeverity) {
         case Notificator::Severity::POLITE:
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::THANK_YOU);
             break;
         case Notificator::Severity::NERVOUS:
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::THATS_BETTER);
             break;
         case Notificator::Severity::ANGRY:
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::CLOSE_THE_DOOR_ANGRY);
             break;
         case Notificator::Severity::HEM:
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::HEM_OFF);
             break;
         default:
             return;
