@@ -28,8 +28,8 @@ void loop()
     notificator.showTemperature(fridge.getTemperature());
     notificator.showCompressorState(fridge.isCompressorTurnedOn());
 
-    unsigned long doorOpenSeconds = fridge.doorOpenSeconds();
-    if (doorOpenSeconds > 0) {
+    if (!fridge.doorIsClosed()) {
+        unsigned long doorOpenSeconds = fridge.doorOpenSeconds();
         Notificator::Severity sev = Notificator::Severity::NONE;
         
         if (doorOpenSeconds >= POLITE_ASK_THRESHOLD && doorOpenSeconds < NERVOUS_ASK_THRESHOLD) {
@@ -46,6 +46,10 @@ void loop()
         }
 
         notificator.askCloseTheDoor(sev);
+    }
+
+    if (fridge.doorIsClosed() && notificator.shouldNotifyWhenDoorIsClosed()) {
+        notificator.notifyDoorIsClosed();
     }
 }
 

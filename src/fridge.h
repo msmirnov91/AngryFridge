@@ -9,6 +9,7 @@ public:
     void perform();
 
     unsigned long doorOpenSeconds() const;
+    bool doorIsClosed() const;
     bool isCompressorTurnedOn() const;
     float getTemperature();
   

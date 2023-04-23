@@ -23,9 +23,13 @@ public:
     };
     
     void askCloseTheDoor(Severity sev);
-    void notifyDoorIsClosed(Severity sev);
+    bool shouldNotifyWhenDoorIsClosed() const;
+    void notifyDoorIsClosed();
 
 private:
     Screen _screen;
     DFPlayer _dfplayer;
+    
+    Severity _doorOpenSeverity;
+    bool _shouldNotifyWhenDoorIsClosed;
 };

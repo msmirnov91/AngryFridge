@@ -6,6 +6,8 @@
 #define TEMPERATURE_LOWER_BOUND 0
 #define TEMPERATURE_UPPER_BOUND 10
 
+#define DOOR_IS_CLOSED_SECONDS_THRESHOLD 1
+
 
 Fridge::Fridge()
     : _compressorTimer(COMPRESSOR_INTERVAL_SECONDS)
@@ -39,6 +41,11 @@ void Fridge::perform()
 unsigned long Fridge::doorOpenSeconds() const
 {
     return _doorChrono.secondsPassed();
+}
+
+bool Fridge::doorIsClosed() const
+{
+    return doorOpenSeconds() <= DOOR_IS_CLOSED_SECONDS_THRESHOLD;
 }
 
 bool Fridge::isCompressorTurnedOn() const

@@ -4,6 +4,8 @@
 Notificator::Notificator()
     : _screen()
     , _dfplayer()
+    , _doorOpenSeverity(Notificator::Severity::NONE)
+    , _shouldNotifyWhenDoorIsClosed(false)
 {}
 
 void Notificator::begin()
@@ -50,8 +52,44 @@ void Notificator::showCompressorState(bool isOn)
 
 void Notificator::askCloseTheDoor(Notificator::Severity sev)
 {
+    _doorOpenSeverity = sev;
+    
+    switch (_doorOpenSeverity) {
+        case Notificator::Severity::POLITE:
+            break;
+        case Notificator::Severity::NERVOUS:
+            break;
+        case Notificator::Severity::ANGRY:
+            break;
+        case Notificator::Severity::HEM:
+            break;
+        default:
+            return;
+    }
+
+    _shouldNotifyWhenDoorIsClosed = true;
 }
 
-void Notificator::notifyDoorIsClosed(Notificator::Severity sev)
+bool Notificator::shouldNotifyWhenDoorIsClosed() const
 {
+    return _shouldNotifyWhenDoorIsClosed;
+}
+
+void Notificator::notifyDoorIsClosed()
+{
+    switch (_doorOpenSeverity) {
+        case Notificator::Severity::POLITE:
+            break;
+        case Notificator::Severity::NERVOUS:
+            break;
+        case Notificator::Severity::ANGRY:
+            break;
+        case Notificator::Severity::HEM:
+            break;
+        default:
+            return;
+    }
+    
+    _doorOpenSeverity = Notificator::Severity::NONE;
+    _shouldNotifyWhenDoorIsClosed = false;
 }
