@@ -5,8 +5,8 @@
 MicroDS18B20<THERMOMETER_PIN> sensor;
 
 
-DS18B20::DS18B20(unsigned int requestsInterval)
-    : _requestTimer(requestsInterval)
+DS18B20::DS18B20(unsigned int requestsIntervalSeconds)
+    : _requestTimer(requestsIntervalSeconds)
 {
 }
 

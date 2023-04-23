@@ -1,14 +1,14 @@
 #include "fridge.h"
 #include "hardware_modules/pin_defines.h"
 
-#define COMPRESSOR_INTERVAL 300
+#define COMPRESSOR_INTERVAL_SECONDS 300
 
 #define TEMPERATURE_LOWER_BOUND 0
 #define TEMPERATURE_UPPER_BOUND 10
 
 
 Fridge::Fridge()
-    : _compressorTimer(COMPRESSOR_INTERVAL)
+    : _compressorTimer(COMPRESSOR_INTERVAL_SECONDS)
     , _doorChrono()
     , _thermometer()
 {}
