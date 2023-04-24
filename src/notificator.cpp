@@ -1,6 +1,6 @@
 #include "notificator.h"
 
-#define UPPER_STATE_BLOCK_BORDER 80
+#define UPPER_STATE_BLOCK_BORDER 65
 #define LEFT_STATE_BLOCK_BORDER 70
 
 
@@ -44,8 +44,8 @@ void Notificator::showStateBlock(
 {
     _printStateBlockMsg(0, String(temperature) + " градусов");
     _printStateBlockMsg(1, _booleanValueMsg(compressorIsOn, "Компрессор", "вкл", "выкл"));
-    // TODO: show time untill compressor turn on
-    _printStateBlockMsg(2, _booleanValueMsg(doorIsClosed, "Дверь", "закрыта", "открыта"));
+    _printStateBlockMsg(2, _untillCompressorTurnOnMsg(untillCompressorTurnOn));
+    _printStateBlockMsg(3, _booleanValueMsg(doorIsClosed, "Дверь", "закрыта", "открыта"));
 }
 
 void Notificator::askCloseTheDoor(Notificator::Severity sev)
@@ -140,6 +140,11 @@ String Notificator::_booleanValueMsg(bool value, String name, String trueState, 
     }
     
     return result;
+}
+
+String Notificator::_untillCompressorTurnOnMsg(unsigned long untillCompressorTurnOn)
+{
+    return "";
 }
 
 void Notificator::_printStateBlockMsg(uint8_t lineNumber, String msg)

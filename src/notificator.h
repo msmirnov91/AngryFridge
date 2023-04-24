@@ -34,7 +34,9 @@ public:
 
 private:
     String _booleanValueMsg(bool value, String name, String trueState, String falseState);
+    String _untillCompressorTurnOnMsg(unsigned long untillCompressorTurnOn);
     void _printStateBlockMsg(uint8_t lineNumber, String msg);
+    
     void _switchHEMMode(bool isOn);
     
     Screen _screen;
