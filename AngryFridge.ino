@@ -25,6 +25,7 @@ void loop()
     notificator.showStateBlock(
         fridge.getTemperature(),
         fridge.isCompressorTurnedOn(),
+        fridge.untillCompressorTurnOn(),
         fridge.doorIsClosed()
     );
 

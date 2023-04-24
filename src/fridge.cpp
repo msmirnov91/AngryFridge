@@ -61,6 +61,15 @@ bool Fridge::isCompressorTurnedOn() const
     return digitalRead(COMPRESSOR_PIN) == COMPRESSOR_ON;
 }
 
+unsigned long Fridge::untillCompressorTurnOn() const
+{
+    if (isCompressorTurnedOn()) {
+        return 0;
+    }
+    
+    return _compressorTimer.secondsUntilReady();
+}
+
 float Fridge::getTemperature()
 {
     return _thermometer.getTemp();

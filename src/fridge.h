@@ -11,6 +11,7 @@ public:
     unsigned long doorOpenSeconds() const;
     bool doorIsClosed() const;
     bool isCompressorTurnedOn() const;
+    unsigned long untillCompressorTurnOn() const;
     float getTemperature();
   
 private:

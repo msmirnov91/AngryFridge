@@ -16,3 +16,9 @@ bool Timer::ready()
 
     return false;
 }
+
+unsigned long Timer::secondsUntilReady() const
+{
+    unsigned long passed = _chrono.secondsPassed();
+    return _interval >= passed ? _interval - passed : 0;
+}

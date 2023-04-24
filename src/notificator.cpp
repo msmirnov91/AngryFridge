@@ -34,10 +34,16 @@ void Notificator::onLoadingEnded()
     _screen.fillScreen(ILI9341_BLACK);
 }
 
-void Notificator::showStateBlock(float temperature, bool compressorIsOn, bool doorIsClosed)
+void Notificator::showStateBlock(
+    float temperature,
+    bool compressorIsOn,
+    unsigned long untillCompressorTurnOn,
+    bool doorIsClosed
+)
 {
     _printStateBlockMsg(0, String(temperature) + " градусов");
     _printStateBlockMsg(1, _booleanValueMsg(compressorIsOn, "Компрессор", "вкл", "выкл"));
+    // TODO: show time untill compressor turn on
     _printStateBlockMsg(2, _booleanValueMsg(doorIsClosed, "Дверь", "закрыта", "открыта"));
 }
 

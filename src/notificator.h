@@ -10,7 +10,12 @@ public:
     void onSystemLoading();
     void onLoadingEnded();
 
-    void showStateBlock(float temperature, bool compressorIsOn, bool doorIsClosed);
+    void showStateBlock(
+        float temperature,
+        bool compressorIsOn,
+        unsigned long untillCompressorTurnOn,
+        bool doorIsClosed
+    );
     
     enum Severity {
         NONE,
