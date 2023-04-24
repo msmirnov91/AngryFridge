@@ -151,7 +151,33 @@ String Notificator::_booleanValueMsg(bool value, String name, String trueState, 
 
 String Notificator::_untillCompressorTurnOnMsg(unsigned long untillCompressorTurnOn)
 {
-    return "";
+    String minutes = " мин";
+    String seconds = " сек";
+    String postfix = " до вкл";
+    
+    String result = "";
+    uint8_t unitsLength = max(minutes.length(), seconds.length());
+    result.reserve(2 + unitsLength + postfix.length());
+    
+    if (untillCompressorTurnOn >= 3600) { // more than an hour
+        result += "--";
+        result += minutes;
+    }
+    else if (untillCompressorTurnOn >= 60) { // more than a minute
+        char value[3] = {0, 0, 0};
+        sprintf(value, "%02d", untillCompressorTurnOn / 60);
+        result += String(value);
+        result += minutes;
+    }
+    else { // seconds
+        char value[3] = {0, 0, 0};
+        sprintf(value, "%02d", untillCompressorTurnOn);
+        result += String(value);
+        result += seconds;
+    }
+    
+    result += postfix;
+    return result;
 }
 
 void Notificator::_printStateBlockMsg(uint8_t lineNumber, String msg)
