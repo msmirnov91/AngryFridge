@@ -130,6 +130,7 @@ String Notificator::_booleanValueMsg(bool value, String name, String trueState, 
 
 void Notificator::_printStateBlockMsg(uint8_t lineNumber, String msg)
 {
-    uint8_t leftTopY = UPPER_STATE_BLOCK_BORDER + lineNumber * _screen.getMinimumTextInterval(); // TODO: check for overflows!
+    uint8_t interval = _screen.getMinimumTextInterval() + 10;
+    uint8_t leftTopY = UPPER_STATE_BLOCK_BORDER + lineNumber * interval; // TODO: check for overflows!
     _screen.printText(LEFT_STATE_BLOCK_BORDER, leftTopY, msg);
 }
