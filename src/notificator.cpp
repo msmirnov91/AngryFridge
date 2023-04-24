@@ -20,16 +20,16 @@ void Notificator::begin()
 void Notificator::onSystemLoading()
 {
     _dfplayer.playWithoutRepeats(DFPlayer::Message::SYSTEM_LOADING);
-    _screen.printText(55, 5, "Загрузка системы...", ILI9341_WHITE, true);
-    _screen.printText(53, 110, "ANGRY FRIDGE", ILI9341_RED, true, Screen::TextSize::LARGE);
-    _screen.printText(4, 220, "Powered by DCP Electronics", ILI9341_GREEN, true);
+    _screen.printTransparentText(55, 5, "Загрузка системы...", ILI9341_WHITE);
+    _screen.printTransparentText(53, 110, "ANGRY FRIDGE", ILI9341_RED, Screen::TextSize::LARGE);
+    _screen.printTransparentText(4, 220, "Powered by DCP Electronics", ILI9341_GREEN);
     delay(1000);
 }
 
 void Notificator::onLoadingEnded()
 {
     _dfplayer.playWithoutRepeats(DFPlayer::Message::SYSTEM_LOADED);
-    _screen.printText(55, 40, "СИСТЕМА ЗАГРУЖЕНА", ILI9341_GREEN, true);
+    _screen.printTransparentText(55, 40, "СИСТЕМА ЗАГРУЖЕНА", ILI9341_GREEN);
     delay(1000);
     _screen.fillScreen(ILI9341_BLACK);
 }

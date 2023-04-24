@@ -30,8 +30,40 @@ void Screen::printText(
     uint8_t leftTopY,
     const String& text,
     uint16_t color,
-    bool transparent,
     Screen::TextSize textSize
+)
+{
+    _internalPrint(leftTopX, leftTopY, text, color, textSize, false);
+}
+
+void Screen::printTransparentText(
+    uint8_t leftTopX,
+    uint8_t leftTopY,
+    const String& text,
+    uint16_t color,
+    Screen::TextSize textSize
+)
+{
+    _internalPrint(leftTopX, leftTopY, text, color, textSize, true);
+}
+
+uint8_t Screen::getMinimumTextInterval(TextSize textSize) const
+{
+    return int(textSize) * 10;
+}
+
+void Screen::fillScreen(uint16_t color)
+{
+    _tft.fillScreen(color);
+}
+
+void Screen::_internalPrint(
+    uint8_t leftTopX,
+    uint8_t leftTopY,
+    const String& text,
+    uint16_t color,
+    Screen::TextSize textSize,
+    bool transparent
 )
 {
     _tft.setTextSize(textSize);
@@ -44,16 +76,6 @@ void Screen::printText(
     }
     _tft.setCursor(leftTopX, leftTopY);
     _tft.print(_utf8ToTFTEncoding(text));
-}
-
-uint8_t Screen::getMinimumTextInterval(TextSize textSize) const
-{
-    return int(textSize) * 10;
-}
-
-void Screen::fillScreen(uint16_t color)
-{
-    _tft.fillScreen(color);
 }
 
 String Screen::_utf8ToTFTEncoding(const String& source)

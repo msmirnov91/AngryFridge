@@ -16,7 +16,13 @@ public:
         uint8_t leftTopY,
         const String& text,
         uint16_t color = ILI9341_WHITE,
-        bool transparent = false,
+        TextSize textSize = TextSize::NORMAL
+    );
+    void printTransparentText(
+        uint8_t leftTopX,
+        uint8_t leftTopY,
+        const String& text,
+        uint16_t color = ILI9341_WHITE,
         TextSize textSize = TextSize::NORMAL
     );
 
@@ -24,6 +30,15 @@ public:
     void fillScreen(uint16_t color);
 
 private:
+    void _internalPrint(
+        uint8_t leftTopX,
+        uint8_t leftTopY,
+        const String& text,
+        uint16_t color,
+        TextSize textSize,
+        bool transparent
+    );
+    
     String _utf8ToTFTEncoding(const String& source);
     bool _isRussianLetterBeginning(unsigned char currentByte);
     unsigned char _convertRussianLetter(unsigned char firstByte, unsigned char secondByte);
