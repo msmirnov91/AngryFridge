@@ -2,6 +2,7 @@
 
 #define UPPER_STATE_BLOCK_BORDER 65
 #define LEFT_STATE_BLOCK_BORDER 70
+#define STATE_BLOCK_LINES_AMOUNT 4
 
 
 Notificator::Notificator()
@@ -42,10 +43,16 @@ void Notificator::showStateBlock(
     bool doorIsClosed
 )
 {
-    _printStateBlockMsg(0, String(temperature) + " градусов");
-    _printStateBlockMsg(1, _booleanValueMsg(compressorIsOn, "Компрессор", "вкл", "выкл"));
-    _printStateBlockMsg(2, _untillCompressorTurnOnMsg(untillCompressorTurnOn));
-    _printStateBlockMsg(3, _booleanValueMsg(doorIsClosed, "Дверь", "закрыта", "открыта"));
+    String messages[STATE_BLOCK_LINES_AMOUNT] = {
+        String(temperature) + " градусов",
+        _booleanValueMsg(compressorIsOn, "Компрессор", "вкл", "выкл"),
+        _untillCompressorTurnOnMsg(untillCompressorTurnOn),
+        _booleanValueMsg(doorIsClosed, "Дверь", "закрыта", "открыта")
+    };
+    
+    for (int i = 0; i < STATE_BLOCK_LINES_AMOUNT; i++) {
+        _printStateBlockMsg(i, messages[i]);
+    }
 }
 
 void Notificator::askCloseTheDoor(Notificator::Severity sev)
