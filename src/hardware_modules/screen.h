@@ -10,6 +10,7 @@ public:
     enum TextSize {
         NORMAL = 2,
         LARGE  = 3,
+        HUGE   = 15,
     };
     void printText(
         uint8_t leftTopX,

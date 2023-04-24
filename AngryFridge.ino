@@ -22,12 +22,18 @@ void loop()
 {
     fridge.perform();
 
-    notificator.showStateBlock(
-        fridge.getTemperature(),
-        fridge.isCompressorTurnedOn(),
-        fridge.untillCompressorTurnOn(),
-        fridge.doorIsClosed()
-    );
+    if (notificator.isHEMMode()) {
+        notificator.notifyHEMMode();
+    }
+    else {
+        notificator.showStateBlock(
+            fridge.getTemperature(),
+            fridge.isCompressorTurnedOn(),
+            fridge.untillCompressorTurnOn(),
+            fridge.doorIsClosed()
+        );
+    }
+    
 
     if (!fridge.doorIsClosed()) {
         unsigned long doorOpenSeconds = fridge.doorOpenSeconds();

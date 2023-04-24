@@ -28,14 +28,20 @@ public:
     void askCloseTheDoor(Severity sev);
     bool shouldNotifyWhenDoorIsClosed() const;
     void notifyDoorIsClosed();
+    
+    bool isHEMMode() const;
+    void notifyHEMMode();
 
 private:
     String _booleanValueMsg(bool value, String name, String trueState, String falseState);
     void _printStateBlockMsg(uint8_t lineNumber, String msg);
+    void _switchHEMMode(bool isOn);
     
     Screen _screen;
     DFPlayer _dfplayer;
     
     Severity _doorOpenSeverity;
     bool _shouldNotifyWhenDoorIsClosed;
+    
+    bool _isHEMMode;
 };

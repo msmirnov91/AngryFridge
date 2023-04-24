@@ -9,6 +9,7 @@ Notificator::Notificator()
     , _dfplayer()
     , _doorOpenSeverity(Notificator::Severity::NONE)
     , _shouldNotifyWhenDoorIsClosed(false)
+    , _isHEMMode(false)
 {}
 
 void Notificator::begin()
@@ -62,7 +63,9 @@ void Notificator::askCloseTheDoor(Notificator::Severity sev)
             _dfplayer.playWithoutRepeats(DFPlayer::Message::CLOSE_THE_DOOR_ANGRY);
             break;
         case Notificator::Severity::HEM:
-            _dfplayer.playWithoutRepeats(DFPlayer::Message::HEM_ON);
+            if (isHEMMode()) break;
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::HEM_ON, DFPlayer::Volume::LOUD);
+            _switchHEMMode(true);
             break;
         default:
             return;
@@ -90,6 +93,7 @@ void Notificator::notifyDoorIsClosed()
             break;
         case Notificator::Severity::HEM:
             _dfplayer.playWithoutRepeats(DFPlayer::Message::HEM_OFF);
+            _switchHEMMode(false);
             break;
         default:
             return;
@@ -97,6 +101,16 @@ void Notificator::notifyDoorIsClosed()
     
     _doorOpenSeverity = Notificator::Severity::NONE;
     _shouldNotifyWhenDoorIsClosed = false;
+}
+
+bool Notificator::isHEMMode() const
+{
+    return _isHEMMode;
+}
+
+void Notificator::notifyHEMMode()
+{
+    _screen.printTransparentText(30, 70, "РУЧ", ILI9341_RED, Screen::TextSize::HUGE);
 }
 
 String Notificator::_booleanValueMsg(bool value, String name, String trueState, String falseState)
@@ -133,4 +147,10 @@ void Notificator::_printStateBlockMsg(uint8_t lineNumber, String msg)
     uint8_t interval = _screen.getMinimumTextInterval() + 10;
     uint8_t leftTopY = UPPER_STATE_BLOCK_BORDER + lineNumber * interval; // TODO: check for overflows!
     _screen.printText(LEFT_STATE_BLOCK_BORDER, leftTopY, msg);
+}
+
+void Notificator::_switchHEMMode(bool isOn)
+{
+    _screen.fillScreen(ILI9341_BLACK);
+    _isHEMMode = isOn;
 }
