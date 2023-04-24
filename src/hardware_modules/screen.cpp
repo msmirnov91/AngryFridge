@@ -16,17 +16,26 @@
 
 Screen::Screen()
     : _tft(Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_SDA, TFT_CLK, TFT_RST, TFT_MISO))
+    , _textSize(Screen::TextSize::NORMAL)
 {}
 
 void Screen::begin()
 {
     _tft.begin();
     _tft.setRotation(ALBUM_ORIENTATION);
-    _tft.setTextSize(2);
 }
 
-void Screen::printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, uint16_t color, bool transparent)
+void Screen::printText(
+    uint8_t leftTopX,
+    uint8_t leftTopY,
+    const String& text,
+    uint16_t color,
+    bool transparent,
+    Screen::TextSize textSize
+)
 {
+    _tft.setTextSize(textSize);
+
     if (transparent) {
         _tft.setTextColor(color);
     }
@@ -37,9 +46,9 @@ void Screen::printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, u
     _tft.print(_utf8ToTFTEncoding(text));
 }
 
-uint8_t Screen::getMinimumTextInterval() const
+uint8_t Screen::getMinimumTextInterval(TextSize textSize) const
 {
-    return 20; // TODO: fix this according current text size
+    return int(textSize) * 10;
 }
 
 void Screen::fillScreen(uint16_t color)

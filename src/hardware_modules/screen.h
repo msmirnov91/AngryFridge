@@ -7,8 +7,20 @@ public:
     Screen();
     void begin();
   
-    void printText(uint8_t leftTopX, uint8_t leftTopY, const String& text, uint16_t color = ILI9341_WHITE, bool transparent = false);
-    uint8_t getMinimumTextInterval() const;
+    enum TextSize {
+        NORMAL = 2,
+        LARGE  = 3,
+    };
+    void printText(
+        uint8_t leftTopX,
+        uint8_t leftTopY,
+        const String& text,
+        uint16_t color = ILI9341_WHITE,
+        bool transparent = false,
+        TextSize textSize = TextSize::NORMAL
+    );
+
+    uint8_t getMinimumTextInterval(TextSize textSize = TextSize::NORMAL) const;
     void fillScreen(uint16_t color);
 
 private:
@@ -17,4 +29,5 @@ private:
     unsigned char _convertRussianLetter(unsigned char firstByte, unsigned char secondByte);
   
     Adafruit_ILI9341 _tft;
+    TextSize _textSize;
 };

@@ -21,7 +21,7 @@ void Notificator::onSystemLoading()
 {
     _dfplayer.playWithoutRepeats(DFPlayer::Message::SYSTEM_LOADING);
     _screen.printText(55, 5, "Загрузка системы...", ILI9341_WHITE, true);
-    _screen.printText(85, 110, "ANGRY FRIDGE", ILI9341_RED, true);
+    _screen.printText(53, 110, "ANGRY FRIDGE", ILI9341_RED, true, Screen::TextSize::LARGE);
     _screen.printText(4, 220, "Powered by DCP Electronics", ILI9341_GREEN, true);
     delay(1000);
 }
