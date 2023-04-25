@@ -20,3 +20,4 @@
 #define THERMOMETER_PIN 4
 #define COMPRESSOR_PIN 5
 #define DOOR_PIN 6
+#define LAMP_PIN 7

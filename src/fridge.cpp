@@ -9,6 +9,9 @@
 #define COMPRESSOR_ON LOW
 #define COMPRESSOR_OFF HIGH
 
+#define LAMP_ON LOW
+#define LAMP_OFF HIGH
+
 #define DOOR_CLOSED LOW
 #define DOOR_OPENED HIGH
 
@@ -26,6 +29,9 @@ void Fridge::begin()
     pinMode(COMPRESSOR_PIN, OUTPUT);
     digitalWrite(COMPRESSOR_PIN, COMPRESSOR_OFF);
     
+    pinMode(LAMP_PIN, OUTPUT);
+    digitalWrite(LAMP_PIN, LAMP_OFF);
+    
     pinMode(DOOR_PIN, INPUT);
 
     _thermometer.begin();
@@ -41,7 +47,11 @@ void Fridge::perform()
         _switchCompressorState(COMPRESSOR_OFF);
     }
     
-    if (digitalRead(DOOR_PIN) == DOOR_CLOSED) {
+    if (digitalRead(DOOR_PIN) == DOOR_OPENED) {
+        digitalWrite(LAMP_PIN, LAMP_ON);
+    }
+    else {
+        digitalWrite(LAMP_PIN, LAMP_OFF);
         _doorChrono.reset();
     }
 }
