@@ -15,6 +15,7 @@ Currently supports only `Arduion Uno`. `Mega` and `Nano` will be supported later
 - 240X320 LCD SPI TFT display controlled by `ILI9341` [example](https://www.youtube.com/watch?v=pfP4Pv3y85Y) (`Adafruit_GFX` and `Adafruit_ILI9341` are available here as .zip archives)
 - `DFPlayer mini` MP3 module [example](https://lesson.iarduino.ru/page/urok-17-podklyuchenie-mini-mp3-pleera-k-arduino/)
 - `DS18B20` temperature sensor [example](https://kit.alexgyver.ru/tutorials/ds18b20/)
+- `JQC-3FF-S-Z` relay
 
 ## Electric circuit
 not developed yet
