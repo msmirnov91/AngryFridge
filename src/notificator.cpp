@@ -120,6 +120,11 @@ void Notificator::notifyHEMMode()
     _screen.printTransparentText(30, 70, "РУЧ", ILI9341_RED, Screen::TextSize::HUGE);
 }
 
+void Notificator::notifyEightThousandVolts()
+{
+    _dfplayer.playWithoutRepeats(DFPlayer::Message::EIGHT_THOUSAND_VOLTS, DFPlayer::Volume::LOUD);
+}
+
 String Notificator::_booleanValueMsg(bool value, String name, String trueState, String falseState)
 {
     uint8_t baseLength = name.length() + 1; // one extra for space

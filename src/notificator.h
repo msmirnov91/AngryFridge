@@ -31,6 +31,8 @@ public:
     
     bool isHEMMode() const;
     void notifyHEMMode();
+    
+    void notifyEightThousandVolts();
 
 private:
     String _booleanValueMsg(bool value, String name, String trueState, String falseState);

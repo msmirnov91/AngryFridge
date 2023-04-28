@@ -4,7 +4,8 @@
 #define POLITE_ASK_THRESHOLD 10
 #define NERVOUS_ASK_THRESHOLD 20
 #define ANGRY_ASK_THRESHOLD 30
-#define HEM_THRESHOLD 30
+#define HEM_THRESHOLD 40
+#define EIGHT_THOUSAND_VOLTS_THRESHOLD 55
 
 
 Notificator notificator;
@@ -53,6 +54,12 @@ void loop()
         }
 
         notificator.askCloseTheDoor(sev);
+
+        if (notificator.isHEMMode()) {
+            if (doorOpenSeconds >= EIGHT_THOUSAND_VOLTS_THRESHOLD) {
+                notificator.notifyEightThousandVolts();
+            }
+        }
     }
 
     if (fridge.doorIsClosed() && notificator.shouldNotifyWhenDoorIsClosed()) {
