@@ -6,7 +6,7 @@
 #define ANGRY_ASK_THRESHOLD 30
 #define HEM_THRESHOLD 40
 #define EIGHT_THOUSAND_VOLTS_THRESHOLD 55
-#define ALARM_THRESHOLD 80
+#define ALARM_THRESHOLD 77
 
 
 Notificator notificator;
