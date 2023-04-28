@@ -18,7 +18,8 @@ Currently supports only `Arduion Uno`. `Mega` and `Nano` will be supported later
 - `JQC-3FF-S-Z` relay
 
 ## Electric circuit
-not developed yet
+The circuit is developed usnig [EasyEDA](https://easyeda.com/). Please note that this is the circuit of the initial version of the project. If I will support some new features in softwae I hardly will update the circuit. Also I was not able to find my display in the library so I choosed the most similar.
+![Angry fridge circuit](https://github.com/msmirnov91/AngryFridge/tree/main/docs/circuit.png?raw=true)
 
 ## How to handle inductive load (compressor) switching
 The compressor switching may lead to high-voltage transients that can disrupt normal operation or even damage the involved equipment. This can be handled by proper `RC` - circuits. [Here](https://www.mzta.ru/images/304/iskrogasyashchiyetsepi.pdf) is a good paper describing what exactly is going on and how to calculate appropriate values of `R` and `C`. For my fridge I choosed the `47 pf` capacitor and `40 ohm` `2w` resistor.
