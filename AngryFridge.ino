@@ -6,6 +6,7 @@
 #define ANGRY_ASK_THRESHOLD 30
 #define HEM_THRESHOLD 40
 #define EIGHT_THOUSAND_VOLTS_THRESHOLD 55
+#define ALARM_THRESHOLD 80
 
 
 Notificator notificator;
@@ -56,8 +57,11 @@ void loop()
         notificator.askCloseTheDoor(sev);
 
         if (notificator.isHEMMode()) {
-            if (doorOpenSeconds >= EIGHT_THOUSAND_VOLTS_THRESHOLD) {
+            if (doorOpenSeconds >= EIGHT_THOUSAND_VOLTS_THRESHOLD && doorOpenSeconds < ALARM_THRESHOLD) {
                 notificator.notifyEightThousandVolts();
+            }
+            if (doorOpenSeconds >= ALARM_THRESHOLD) {
+                notificator.alarm();
             }
         }
     }

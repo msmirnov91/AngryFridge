@@ -25,6 +25,8 @@ public:
         THATS_BETTER           = 13,
         CLOSE_THE_DOOR_ANGRY   = 14,
         AT_LEAST               = 15,
+        
+        ALARM          = 16,
     };
     
     enum Volume {

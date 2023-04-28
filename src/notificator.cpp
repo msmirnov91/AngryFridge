@@ -4,6 +4,8 @@
 #define LEFT_STATE_BLOCK_BORDER 70
 #define STATE_BLOCK_LINES_AMOUNT 4
 
+#define ALARM_INTERVAL_SECONDS 5
+
 
 Notificator::Notificator()
     : _screen()
@@ -11,6 +13,7 @@ Notificator::Notificator()
     , _doorOpenSeverity(Notificator::Severity::NONE)
     , _shouldNotifyWhenDoorIsClosed(false)
     , _isHEMMode(false)
+    , _alarmTimer(ALARM_INTERVAL_SECONDS)
 {}
 
 void Notificator::begin()
@@ -96,7 +99,7 @@ void Notificator::notifyDoorIsClosed()
             _dfplayer.playWithoutRepeats(DFPlayer::Message::THATS_BETTER);
             break;
         case Notificator::Severity::ANGRY:
-            _dfplayer.playWithoutRepeats(DFPlayer::Message::CLOSE_THE_DOOR_ANGRY);
+            _dfplayer.playWithoutRepeats(DFPlayer::Message::AT_LEAST);
             break;
         case Notificator::Severity::HEM:
             _dfplayer.playWithoutRepeats(DFPlayer::Message::HEM_OFF);
@@ -123,6 +126,13 @@ void Notificator::notifyHEMMode()
 void Notificator::notifyEightThousandVolts()
 {
     _dfplayer.playWithoutRepeats(DFPlayer::Message::EIGHT_THOUSAND_VOLTS, DFPlayer::Volume::LOUD);
+}
+
+void Notificator::alarm()
+{
+    if (_alarmTimer.ready()) {
+        _dfplayer.playWithoutRepeats(DFPlayer::Message::ALARM, DFPlayer::Volume::LOUD);
+    }
 }
 
 String Notificator::_booleanValueMsg(bool value, String name, String trueState, String falseState)

@@ -1,3 +1,6 @@
+ #ifndef H_TIMER
+ #define H_TIMER
+ 
 #include "chrono.h"
 
 
@@ -11,3 +14,5 @@ private:
     Chronometer _chrono;
     const unsigned long _interval;
 };
+
+#endif // H_TIMER

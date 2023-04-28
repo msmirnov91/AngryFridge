@@ -1,5 +1,6 @@
 #include "hardware_modules/screen.h"
 #include "hardware_modules/dfplayer_mini_mp3.h"
+#include "hardware_modules/utils/timer.h"
 
 
 class Notificator {
@@ -33,6 +34,7 @@ public:
     void notifyHEMMode();
     
     void notifyEightThousandVolts();
+    void alarm();
 
 private:
     String _booleanValueMsg(bool value, String name, String trueState, String falseState);
@@ -48,4 +50,6 @@ private:
     bool _shouldNotifyWhenDoorIsClosed;
     
     bool _isHEMMode;
+    
+    Timer _alarmTimer;
 };
