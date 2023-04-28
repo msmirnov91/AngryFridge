@@ -22,7 +22,7 @@ The circuit is developed usnig [EasyEDA](https://easyeda.com/). Please note that
 ![Angry fridge circuit](docs/circuit.png)
 
 ## How to handle inductive load (compressor) switching
-The compressor switching may lead to high-voltage transients that can disrupt normal operation or even damage the involved equipment. This can be handled by proper `RC` - circuits. [Here](https://www.mzta.ru/images/304/iskrogasyashchiyetsepi.pdf) is a good paper describing what exactly is going on and how to calculate appropriate values of `R` and `C`. For my fridge I choosed the `47 pf` capacitor and `40 ohm` `2w` resistor.
+The compressor switching may lead to high-voltage transients that can disrupt normal operation or even damage the involved equipment. This can be handled by proper `RC` - circuits. [Here](https://www.mzta.ru/images/304/iskrogasyashchiyetsepi.pdf) is a good paper describing what exactly is going on and how to calculate appropriate values of `R` and `C`. For my fridge I choosed the `0.022 uF` capacitor and `40 ohm` `2w` resistor.
 
 ## Sounds
 Click [here](https://voxworker.com/ru) to generate mp3 by text
